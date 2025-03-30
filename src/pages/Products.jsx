@@ -3,16 +3,23 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import productData from "../data/productData"; 
 
-function Products() {
+function Products( {cart, setCart} ) {
 
-  const [clicked, setClicked] = useState(false);
+  const [clickedButton, setClickedButton] = useState(null);
 
-  const handleClick = (e) => {
-    setClicked(true);
-    setTimeout(() => setClicked(false), 200);  // Reset scale after 200ms
-    if (onClick) onClick(e);
+  const handleClick = (productName, callback) => {
+    setClickedButton(productName);
+    setTimeout(() => setClickedButton(null), 200); // Reset scale after 200ms
+    if (callback) callback();
   };
+
+
+  const handleAddToCart = (productName) => {
+    setCart([...cart, productName]); // Add product to cart array
+  };
+  console.log(cart);
 
   const cardstyle = 'cursor-pointer p-4 w-sm flex flex-col transition-transform duration-200 hover:scale-99';
 
@@ -21,32 +28,49 @@ function Products() {
   const buttonsection = 'flex mt-auto space-x-2';
 
   //const button = `transition transform duration-200 ease-out ${clicked ? 'scale-95' : 'scale-100'} mt-4 bg-green-600 text-white hover:bg-green-700 hover:scale-105`;
-  const button = `cursor-pointer mt-4 bg-green-600 text-white hover:bg-green-700 hover:scale-105`;
+  const button = `cursor-pointer mt-4 bg-green-600 text-white hover:bg-green-700`;
 
   const price = 'text-lg font-semibold text-black mb-4';
 
     return (
       // <div className='flex-wrap'>
       <div className='flex flex-wrap gap-4 p-4 justify-center'>
-        <Card className={cardstyle}>
+        
+        {productData.map((product) => (
+        <Card key={product.id} className={cardstyle}>
           <CardHeader>
-            <CardTitle>Pet Food</CardTitle>
-            <h2 className={price}>₹836/-</h2>
+            <CardTitle>{product.name}</CardTitle>
+            <h2 className={price}>₹{product.price}/-</h2>
           </CardHeader>
           <CardContent className={cardcontent}>
-          
-            <p>Himalaya Healthy Pet Food | Meat & Rice Flavor | Adult | Complete & Balanced Nutrition for Dogs | 3 kg Pack</p>
-              <img src="https://i5.walmartimages.com/seo/Himalaya-Healthy-PET-food-Puppy-1-2-Kg_32980fad-fcff-46ab-9ac8-438aa4ec9195.cdee9847905dee728962b6d30c775d72.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" alt="" />
+            <p>{product.description}</p>
+            <img src={product.image} alt={product.name} />
             <div className={buttonsection}>
-              <Button className={button}>Buy Now</Button>
-              <Button className={button}>Add to Cart</Button>
-            
-            {/* <Button className={button} onClick={handleClick}>Add to Cart</Button> */}
+              <Button
+                className={`${button} transition-transform duration-100 ${
+                  clickedButton === product.name ? "scale-85" : "scale-100"
+                }`}
+                onClick={() => handleClick(product.name)}
+              >
+                Buy Now
+              </Button>
+              <Button
+                className={`${button} transition-transform duration-100 ${
+                  clickedButton === product.name + "_cart" ? "scale-85" : "scale-100"
+                }`}
+                onClick={() => handleClick(product.name + "_cart", () => handleAddToCart(product.name))}
+              >
+                Add to Cart
+              </Button>
             </div>
           </CardContent>
         </Card>
+      ))}
 
-        <Card className={cardstyle}>
+
+
+
+        {/* <Card className={cardstyle}>
         <CardHeader>
           <CardTitle>Pedigree</CardTitle>
           <h2 className={price}>₹621/-</h2>
@@ -56,12 +80,12 @@ function Products() {
             <img src="https://m.media-amazon.com/images/I/41hmg1Ku4EL._SX300_SY300_QL70_FMwebp_.jpg" alt="" />
             <div className={buttonsection}>
             <Button className={button}>Buy Now</Button>
-            <Button className={button}>Add to Cart</Button>
+            <Button className={button} onClick={() => handleAddToCart("Pedigree")}>Add to Cart</Button>
           </div>
         </CardContent>
-        </Card>
+        </Card> */}
 
-        <Card className={cardstyle}>
+        {/* <Card className={cardstyle}>
         <CardHeader>
           <CardTitle>Stainless Steel Bowl</CardTitle>
           <h2 className={price}>₹349/-</h2>
@@ -71,7 +95,7 @@ function Products() {
             <img src="https://m.media-amazon.com/images/I/51iD4gjpJaL._AC_UL480_FMwebp_QL65_.jpg" alt="" />
           <div className={buttonsection}>
           <Button className={button}>Buy Now</Button>
-          <Button className={button}>Add to Cart</Button>
+          <Button className={button} onClick={() => handleAddToCart("Stainless Steel Bowl")}>Add to Cart</Button>
           </div>
         </CardContent>
         </Card>
@@ -86,7 +110,7 @@ function Products() {
             <img src="https://m.media-amazon.com/images/I/61x521riz7L._AC_UL480_FMwebp_QL65_.jpg" alt="" />
             <div className={buttonsection}>
             <Button className={button}>Buy Now</Button>
-            <Button className={button}>Add to Cart</Button>
+            <Button className={button} onClick={() => handleAddToCart("Steam Brush")}>Add to Cart</Button>
           </div>
         </CardContent>
         </Card>
@@ -101,7 +125,7 @@ function Products() {
             <img src="https://m.media-amazon.com/images/I/71dDrG6kN-L._AC_UL480_FMwebp_QL65_.jpg" alt="" />
             <div className={buttonsection}>
             <Button className={button}>Buy Now</Button>
-            <Button className={button}>Add to Cart</Button>
+            <Button className={button} onClick={() => handleAddToCart("Wet Wipes")}>Add to Cart</Button>
           </div>
         </CardContent>
         </Card>
@@ -117,7 +141,7 @@ function Products() {
             <img src="https://m.media-amazon.com/images/I/71o84Bphv-L._AC_UL480_FMwebp_QL65_.jpg" alt="" />
             <div className={buttonsection}>
             <Button className={button}>Buy Now</Button>
-            <Button className={button}>Add to Cart</Button>
+            <Button className={button} onClick={() => handleAddToCart("Dry Chicken and Egg")}>Add to Cart</Button>
           </div>
         </CardContent>
         </Card>
@@ -133,7 +157,7 @@ function Products() {
             <img src="https://m.media-amazon.com/images/I/61jc-DPxKSL._AC_UL480_FMwebp_QL65_.jpg" alt="" />
             <div className={buttonsection}>
             <Button className={button}>Buy Now</Button>
-            <Button className={button}>Add to Cart</Button>
+            <Button className={button} onClick={() => handleAddToCart("Body Belt")}>Add to Cart</Button>
           </div>
         </CardContent>
         </Card>
@@ -149,7 +173,7 @@ function Products() {
             <img src="https://m.media-amazon.com/images/I/31E7PswD0lL._SX300_SY300_QL70_FMwebp_.jpg" alt="" />
             <div className={buttonsection}>
             <Button className={button}>Buy Now</Button>
-            <Button className={button}>Add to Cart</Button>
+            <Button className={button} onClick={() => handleAddToCart("Multipurpose Pet Bowls for Dogs")}>Add to Cart</Button>
           </div>
         </CardContent>
         </Card>
@@ -165,7 +189,7 @@ function Products() {
             <img src="https://m.media-amazon.com/images/I/51ez5oWoCSL._SY450_.jpg" alt="" />
             <div className={buttonsection}>
             <Button className={button}>Buy Now</Button>
-            <Button className={button}>Add to Cart</Button>
+            <Button className={button} onClick={() => handleAddToCart("Collar Set")}>Add to Cart</Button>
           </div>
         </CardContent>
         </Card>
@@ -181,7 +205,7 @@ function Products() {
             <img src="https://m.media-amazon.com/images/I/51s+T+8Rb6L._SY300_SX300_.jpg" alt="" />
             <div className={buttonsection}>
             <Button className={button}>Buy Now</Button>
-            <Button className={button}>Add to Cart</Button>
+            <Button className={button} onClick={() => handleAddToCart("Biscuit")}>Add to Cart</Button>
           </div>
         </CardContent>
         </Card>
@@ -197,10 +221,10 @@ function Products() {
             <img src="https://m.media-amazon.com/images/I/61x521riz7L._SY355_.jpg" alt="" />
             <div className={buttonsection}>
             <Button className={button}>Buy Now</Button>
-            <Button className={button}>Add to Cart</Button>
+            <Button className={button} onClick={() => handleAddToCart("Brush")}>Add to Cart</Button>
           </div>
         </CardContent>
-        </Card>
+        </Card> */}
       </div>
     );
   }
