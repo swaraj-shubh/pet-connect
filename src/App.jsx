@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
+
+import './App.css'
+import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
@@ -29,7 +29,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-gray-100">
         <Header />
-        <div className="container mx-auto p-4">
+        <div className="container p-4 mx-auto">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products cart={cart} setCart={setCart} />} />

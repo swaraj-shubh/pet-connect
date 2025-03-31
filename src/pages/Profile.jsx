@@ -25,10 +25,10 @@ function Profile( { name, email, pets, appointments, orders, cart } ) {
 
 
   return (
-    <div className="p-6 max-w-3xl mx-auto ml-12">
+    <div className="max-w-3xl p-6 mx-auto ml-12">
       <Card className="p-4">
         <CardHeader className="flex flex-col items-center">
-          <img src="/profile.png" alt="Profile" className="w-24 h-24 rounded-full mb-2" />
+          <img src="/profile.png" alt="Profile" className="w-24 h-24 mb-2 rounded-full" />
           <CardTitle>{profileCompleted ? name : "Profile Incomplete"}</CardTitle>
           {profileCompleted ? (
             <p className="text-sm text-gray-500">{email}</p>
@@ -39,7 +39,7 @@ function Profile( { name, email, pets, appointments, orders, cart } ) {
       </Card>
 
       <Tabs defaultValue="pets" className="mt-6">
-        <TabsList className="flex justify-around bg-green-400 p-2 rounded-lg">
+        <TabsList className="flex justify-around p-2 bg-green-400 rounded-lg">
           <TabsTrigger className={tabstrigger} value="pets">Pets</TabsTrigger>
           <TabsTrigger className={tabstrigger} value="appointments">Appointments</TabsTrigger>
           <TabsTrigger className={tabstrigger} value="orders">Orders</TabsTrigger>
@@ -76,7 +76,7 @@ function Profile( { name, email, pets, appointments, orders, cart } ) {
             
               <>
               <p>Your Orders</p>
-              <ul className="list-disc pl-4">
+              <ul className="pl-4 list-disc">
                 {cart.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
