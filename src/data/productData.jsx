@@ -75,7 +75,8 @@ export const productData = [
         price: 836,
         description: "Himalaya Healthy Pet Food | Meat & Rice Flavor | Adult | Complete & Balanced Nutrition for Dogs | 3 kg Pack",
         image: "https://i5.walmartimages.com/seo/Himalaya-Healthy-PET-food-Puppy-1-2-Kg_32980fad-fcff-46ab-9ac8-438aa4ec9195.cdee9847905dee728962b6d30c775d72.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
-      },
+    },
+    
   ];
   
   export default productData;

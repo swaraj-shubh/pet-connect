@@ -3,10 +3,10 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import "./home.css";
+
 function Home() {
     return (
-      <div className="homek">
+      <div>
         {/* <Card className="max-w-lg p-6 mx-auto mb-4 text-center shadow-lg bg-white/90 rounded-xl">
           <CardTitle className="mb-2 text-3xl font-bold text-gray-800">
             Welcome to PetConnect

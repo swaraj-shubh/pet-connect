@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Products from './pages/Products';
+import Buy from "./pages/Buy";
 import Appointments from './pages/Appointments';
 import Grooming from './pages/Grooming';
 import Events from './pages/Events';
@@ -31,8 +32,9 @@ function App() {
         <Header />
         <div className="container p-4 mx-auto">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
             <Route path="/products" element={<Products cart={cart} setCart={setCart} />} />
+            <Route path="/buy/:productId" element={<Buy />} />
             <Route path="/appointments" element={<Appointments />} />
             <Route path="/grooming" element={<Grooming />} />
             <Route path="/events" element={<Events />} />

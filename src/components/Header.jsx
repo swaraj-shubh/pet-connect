@@ -23,10 +23,12 @@ function Header() {
   return (
     <header className="bg-green-500 shadow-2xl rounded-b-sm">
       <div className="container mx-auto p-4 flex justify-between items-center">
-      <Link to="/" className="flex items-center gap-2">
-        <img src="/bithound.svg" alt="PetConnect Logo" className='h-10 w-10 hover:scale-105' />
-        <h1 className="text-2xl font-bold hover:scale-105">PetConnect</h1>
-      </Link>
+        
+        <Link to="/" className="flex items-center gap-2">
+          <img src="/bithound.svg" alt="PetConnect Logo" className='h-10 w-10 hover:scale-105' />
+          <h1 className="text-2xl font-bold hover:scale-105">PetConnect</h1>
+        </Link>
+
         <NavigationMenu>
           <NavigationMenuList className="flex gap-4">
           
@@ -36,20 +38,20 @@ function Header() {
             </NavigationMenuLink>
           </Link>
         
-        <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              shubham
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-  <NavigationMenuLink asChild>
-    <Link to="/products" className={getLinkClass("/products")}>
-      Products
-    </Link>
-  </NavigationMenuLink>
-</NavigationMenuItem>  */}
+            <NavigationMenuItem>
+              <Link href="/" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  shubham
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild>
+                <Link to="/products" className={getLinkClass("/products")}>
+                  Products
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>  */}
 
 
         <NavigationMenuItem>
@@ -76,17 +78,17 @@ function Header() {
             </NavigationMenuLink>
         </NavigationMenuItem> */}
 
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link to="/events" className={getLinkClass("/events")}>Events</Link>
             </NavigationMenuLink>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
 
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link to="/adoption" className={getLinkClass("/adoption")}>Adoption</Link>
             </NavigationMenuLink>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
 
         <NavigationMenuItem>
             <NavigationMenuLink asChild>
