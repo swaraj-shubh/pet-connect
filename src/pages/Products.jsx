@@ -38,7 +38,7 @@ function Products( {cart, setCart} ) {
 
     return (
       // <div className='flex-wrap'>
-      <div className='flex flex-wrap gap-4 p-4 justify-center'>
+      <div className='flex flex-wrap justify-center gap-4 p-4'>
         
         {productData.map((product) => (
         <Card key={product.id} className={cardstyle} onClick={() => {navigate(`/buy/${product.id}`); } } >

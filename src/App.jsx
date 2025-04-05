@@ -14,9 +14,10 @@ import Events from './pages/Events';
 import Adoption from './pages/Adoption';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
+import Login from './pages/Login';
 
 function App() {
-
+    const [enter, setEnter] = useState(0);
     const [cart, setCart] = useState([]);
     //const [profileCompleted, setProfileCompleted] = useState(false);
     const [name, setName] = useState("John Doe");
@@ -29,10 +30,17 @@ function App() {
     <>
     <Router>
       <div className="min-h-screen bg-gray-100">
-        <Header />
+        
+        {
+          enter===1 && <Header />
+        }
+          
+        
         <div className="container p-4 mx-auto">
           <Routes>
-            <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
+            <Route path="/" element={<Login enter={enter} setEnter={setEnter} cart={cart} setCart={setCart} />} />
+            <Route path="/home" element={<Home cart={cart} setCart={setCart} setEnter={setEnter} />} />
+            {/* <Route path="/signup" element={<Signup />} /> */}
             <Route path="/products" element={<Products cart={cart} setCart={setCart} />} />
             <Route path="/buy/:productId" element={<Buy />} />
             <Route path="/appointments" element={<Appointments />} />

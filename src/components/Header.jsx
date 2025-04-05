@@ -21,11 +21,11 @@ function Header() {
 
 
   return (
-    <header className="bg-green-500 shadow-2xl rounded-b-sm">
-      <div className="container mx-auto p-4 flex justify-between items-center">
+    <header className="bg-green-500 rounded-b-sm shadow-2xl">
+      <div className="container flex items-center justify-between p-4 mx-auto">
         
         <Link to="/" className="flex items-center gap-2">
-          <img src="/bithound.svg" alt="PetConnect Logo" className='h-10 w-10 hover:scale-105' />
+          <img src="/bithound.svg" alt="PetConnect Logo" className='w-10 h-10 hover:scale-105' />
           <h1 className="text-2xl font-bold hover:scale-105">PetConnect</h1>
         </Link>
 
@@ -56,7 +56,7 @@ function Header() {
 
         <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link to="/" className={getLinkClass("/")}>Home</Link>
+              <Link to="/home" className={getLinkClass("/home")}>Home</Link>
             </NavigationMenuLink>
         </NavigationMenuItem>
 
