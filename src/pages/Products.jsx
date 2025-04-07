@@ -25,7 +25,7 @@ function Products( {cart, setCart} ) {
   console.log(cart);
 
 //  const cardstyle = 'cursor-pointer p-4 w-sm flex flex-col transition-transform duration-200 hover:scale-99';
-  const cardstyle = 'cursor-pointer p-4 w-[300px] flex flex-col transition-transform duration-200 hover:scale-[0.99]';
+  const cardstyle = 'p-4 w-[300px] flex flex-col transition-transform duration-200 hover:scale-[0.99]';
 
   const cardcontent = 'flex flex-col flex-grow';
 
@@ -41,7 +41,7 @@ function Products( {cart, setCart} ) {
       <div className='flex flex-wrap justify-center gap-4 p-4'>
         
         {productData.map((product) => (
-        <Card key={product.id} className={cardstyle} onClick={() => {navigate(`/buy/${product.id}`); } } >
+        <Card key={product.id} className={cardstyle} >
           <CardHeader>
             <CardTitle>{product.name}</CardTitle>
             <h2 className={price}>₹{product.price}/-</h2>
