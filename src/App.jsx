@@ -57,11 +57,4 @@ function App() {
   );
 }
 
-
-// function App() {
-//   return(
-//     <p>madarchod</p>
-    
-//   );
-// }
 export default App
